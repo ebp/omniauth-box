@@ -33,49 +33,26 @@ module OmniAuth
       end
       
       def request_phase
-puts "****** IN REQUEST"
         options[:response_type] ||= 'code'
-puts "request_phase >>>>>> #{options}"
         super
       end
       
       def callback_phase
-puts "****** IN CALLBACK"
-p request.params
         request.params['state'] = session['omniauth.state']
-        options[:grant_type] ||= 'authorization_code'
-        options[:code] ||= session['omniauth.state']
-p request.params
+#        options[:grant_type] ||= 'authorization_code'
+#        options[:code] ||= session['omniauth.code']
         super
       end
         
       def build_access_token
-puts "****** IN BUILD ACCESS_TOKEN"
-
         access_token = super
-puts "CLIENT: >>>>>>>>>>>>>>>> #{client.inspect}"
-puts "ACCESS TOKEN: >>>>>>>>>>>>>>>> #{access_token.inspect}"
-puts "ACCESS_TOKEN.TOKEN >>>>>>>>>>>>>>>> #{access_token.token.inspect}"
         token = access_token.token
-puts "TOKEN >>>>>>>>>>>>>>>>> #{client.inspect}"
-puts "TOKEN >>>>>>>>>>>>>>>>> #{token.inspect}"
-puts "ACCESS_TOKEN.params >>>>>>>>>>>>>>>>> #{access_token.params.inspect}"
-
-# here, merge grant type and request.params[:code] / response code
         @access_token = ::OAuth2::AccessToken.new(client, token, access_token.params)
-puts ">>>>>>>>>>>>>>>>>>>>>>> #{@access_token.inspect}"
         super
       end
  
-#      def auth_hash
-#puts "****** IN AUTH_HASH"
-#        thing = OmniAuth::Utils.deep_merge(super, client_params.merge({
-#          :grant_type => 'authorization_code'}))
-#        thing
-#      end
 
       def raw_info
-      #  @raw_info ||= access_token.get('/api/v1/users/current.json').parsed
         @raw_info ||= access_token.get('/2.0/users/me').parsed
       end
       
@@ -89,7 +66,7 @@ puts ">>>>>>>>>>>>>>>>>>>>>>> #{@access_token.inspect}"
       end
       
       def primary_email
-        raw_info['login']#['email_addresses'].detect{|address| address['type'] == 'primary'}['address']
+        raw_info['login']
       end
     end
   end
