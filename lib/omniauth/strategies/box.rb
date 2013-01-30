@@ -43,6 +43,8 @@ puts "request_phase >>>>>> #{options}"
 puts "****** IN CALLBACK"
 p request.params
         request.params['state'] = session['omniauth.state']
+        options[:grant_type] ||= 'authorization_code'
+        options[:code] ||= session['omniauth.state']
 p request.params
         super
       end
