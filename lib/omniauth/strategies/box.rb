@@ -45,9 +45,9 @@ p request.params
       end
         
       def build_access_token
-        # access_token = super
-        # token = eval(access_token.token)['token']
-        # @access_token = ::OAuth2::AccessToken.new(client, token, access_token.params)
+        access_token = super
+        token = eval(access_token.token)['token']
+        @access_token = ::OAuth2::AccessToken.new(client, token, access_token.params)
       end
  
       def raw_info
