@@ -48,8 +48,9 @@ p request.params
         access_token = super
 puts ">>>>>>>>>>>>>>>> #{access_token.inspect}"
         token = eval(access_token.token)['token']
+puts ">>>>>>>>>> #{token.inspect}"
         @access_token = ::OAuth2::AccessToken.new(client, token, access_token.params)
-puts ">>>>>>>>>>>>>>>>>>>>>>> #{@access_token}"
+puts ">>>>>>>>>>>>>>>>>>>>>>> #{@access_token.inspect}"
         super
       end
  
