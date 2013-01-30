@@ -69,8 +69,9 @@ puts ">>>>>>>>>>>>>>>>>>>>>>> #{@access_token.inspect}"
  
       def auth_hash
 puts "****** IN AUTH_HASH"
-        OmniAuth::Utils.deep_merge(super, client_params.merge({
+        thing = OmniAuth::Utils.deep_merge(super, client_params.merge({
           :grant_type => 'authorization_code'}))
+        thing
       end
 
       def raw_info
