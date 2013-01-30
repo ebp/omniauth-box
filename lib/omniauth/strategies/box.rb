@@ -16,15 +16,20 @@ module OmniAuth
       
       info do
         prune!({
-          :nickname => raw_info['name'],
-          :name => raw_info['full_name'],
-          :location => raw_info['location'],
-          :image => raw_info['mugshot_url'],
-          :description => raw_info['job_title'],
-          :email => primary_email,
-          :urls => {
-            :box => raw_info['web_url']
-          }
+          :type => raw_info['type'],
+          :id => raw_info['id'],
+          :name => raw_info['name'],
+          :login => primary_email,
+          :created_at => raw_info['created_at'],
+          :modified_at => raw_info['modified_at'],
+          :language => raw_info['language'],
+          :space_amount => raw_info['space_amount'],
+          :max_upload_size => raw_info['max_upload_size'],
+          :status => raw_info['status'],
+          :job_title => raw_info['job_title'],
+          :phone => raw_info['phone'],
+          :address => raw_info['address'],
+          :avatar_url => raw_info['avatar_url'],
         })
       end
 
@@ -32,18 +37,19 @@ module OmniAuth
         prune!({:raw_info => raw_info})
       end
       
+
       def request_phase
         options[:response_type] ||= 'code'
         super
       end
       
+
       def callback_phase
         request.params['state'] = session['omniauth.state']
-#        options[:grant_type] ||= 'authorization_code'
-#        options[:code] ||= session['omniauth.code']
         super
       end
         
+
       def build_access_token
         access_token = super
         token = access_token.token
@@ -56,6 +62,7 @@ module OmniAuth
         @raw_info ||= access_token.get('/2.0/users/me').parsed
       end
       
+
       private
 
       def prune!(hash)
