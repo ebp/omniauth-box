@@ -44,6 +44,7 @@ puts "****** IN CALLBACK"
 p request.params
         request.params['state'] = session['omniauth.state']
 p request.params
+p @access_token.inspect
         super
       end
         
