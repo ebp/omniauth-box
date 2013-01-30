@@ -34,18 +34,19 @@ module OmniAuth
       
       def request_phase
         options[:response_type] ||= 'code'
+        options[:state] = 'authenticated'
         super
       end
       
       def callback_phase
-        request.params['state'] = session['omniauth.state']
+        #request.params['state'] = session['omniauth.state']
         super
       end
         
       def build_access_token
-        access_token = super
-        token = eval(access_token.token)['token']
-        @access_token = ::OAuth2::AccessToken.new(client, token, access_token.params)
+        # access_token = super
+        # token = eval(access_token.token)['token']
+        # @access_token = ::OAuth2::AccessToken.new(client, token, access_token.params)
       end
  
       def raw_info
