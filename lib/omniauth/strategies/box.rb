@@ -55,8 +55,6 @@ puts "CLIENT: >>>>>>>>>>>>>>>> #{client.inspect}"
 puts "ACCESS TOKEN: >>>>>>>>>>>>>>>> #{access_token.inspect}"
 puts "ACCESS_TOKEN.TOKEN >>>>>>>>>>>>>>>> #{access_token.token.inspect}"
         token = access_token.token
-        access_token.grant_type = "authorization_code"
-        access_token.code = request.params['code']
 puts "TOKEN >>>>>>>>>>>>>>>>> #{token.inspect}"
 puts "ACCESS_TOKEN.params >>>>>>>>>>>>>>>>> #{access_token.params.inspect}"
         @access_token = ::OAuth2::AccessToken.new(client, token, access_token.params)
