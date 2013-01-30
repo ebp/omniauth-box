@@ -67,12 +67,12 @@ puts ">>>>>>>>>>>>>>>>>>>>>>> #{@access_token.inspect}"
         super
       end
  
-      def auth_hash
-puts "****** IN AUTH_HASH"
-        thing = OmniAuth::Utils.deep_merge(super, client_params.merge({
-          :grant_type => 'authorization_code'}))
-        thing
-      end
+#      def auth_hash
+#puts "****** IN AUTH_HASH"
+#        thing = OmniAuth::Utils.deep_merge(super, client_params.merge({
+#          :grant_type => 'authorization_code'}))
+#        thing
+#      end
 
       def raw_info
       #  @raw_info ||= access_token.get('/api/v1/users/current.json').parsed
