@@ -17,7 +17,6 @@ module OmniAuth
       info do
         prune!({
           :type => raw_info['type'],
-          :id => raw_info['id'],
           :name => raw_info['name'],
           :login => primary_email,
           :created_at => raw_info['created_at'],

@@ -2,11 +2,11 @@
 require File.expand_path('../lib/omniauth-box/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Alex Youpdidou Scialom"]
+  gem.authors       = ["Alex Scialom"]
   gem.email         = ["leopard.not.a@gmail.com"]
-  gem.description   = %q{OmniAuth strategy for Box}
-  gem.summary       = %q{OmniAuth strategy for Box}
-#  gem.homepage      = ""
+  gem.description   = %q{OmniAuth strategy for Box API V2}
+  gem.summary       = %q{OmniAuth strategy for Box API V2}
+  gem.homepage      = "https://github.com/youpdidou/omniauth-box.git"
   
 #  gem.rubyforge_project = "omniauth-box"
 
