@@ -75,7 +75,8 @@ puts "****** IN AUTH_HASH"
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/api/v1/users/current.json').parsed
+      #  @raw_info ||= access_token.get('/api/v1/users/current.json').parsed
+        @raw_info ||= access_token.get('/2.0/users/me').parsed
       end
       
       private
@@ -88,7 +89,7 @@ puts "****** IN AUTH_HASH"
       end
       
       def primary_email
-        raw_info['contact']['email_addresses'].detect{|address| address['type'] == 'primary'}['address']
+        raw_info['login']#['email_addresses'].detect{|address| address['type'] == 'primary'}['address']
       end
     end
   end
