@@ -57,8 +57,11 @@ puts "CLIENT: >>>>>>>>>>>>>>>> #{client.inspect}"
 puts "ACCESS TOKEN: >>>>>>>>>>>>>>>> #{access_token.inspect}"
 puts "ACCESS_TOKEN.TOKEN >>>>>>>>>>>>>>>> #{access_token.token.inspect}"
         token = access_token.token
+puts "TOKEN >>>>>>>>>>>>>>>>> #{client.inspect}"
 puts "TOKEN >>>>>>>>>>>>>>>>> #{token.inspect}"
 puts "ACCESS_TOKEN.params >>>>>>>>>>>>>>>>> #{access_token.params.inspect}"
+
+# here, merge grant type and request.params[:code] / response code
         @access_token = ::OAuth2::AccessToken.new(client, token, access_token.params)
 puts ">>>>>>>>>>>>>>>>>>>>>>> #{@access_token.inspect}"
         super
