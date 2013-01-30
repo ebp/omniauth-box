@@ -33,12 +33,14 @@ module OmniAuth
       end
       
       def request_phase
+puts "****** IN REQUEST"
         options[:response_type] ||= 'code'
-p options
+puts "request_phase >>>>>> #{options}"
         super
       end
       
       def callback_phase
+puts "****** IN CALLBACK"
 p request.params
         request.params['state'] = session['omniauth.state']
 p request.params
@@ -46,6 +48,8 @@ p request.params
       end
         
       def build_access_token
+puts "****** IN BUILD ACCESS_TOKEN"
+
         access_token = super
 puts "CLIENT: >>>>>>>>>>>>>>>> #{client.inspect}"
 puts "ACCESS TOKEN: >>>>>>>>>>>>>>>> #{access_token.inspect}"
