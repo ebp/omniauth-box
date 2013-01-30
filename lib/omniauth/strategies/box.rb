@@ -46,9 +46,11 @@ p request.params
         
       def build_access_token
         access_token = super
-puts ">>>>>>>>>>>>>>>> #{access_token.token}"
+puts "CLIENT: >>>>>>>>>>>>>>>> #{client.inspect}"
+puts "ACCESS TOKEN: >>>>>>>>>>>>>>>> #{access_token.inspect}"
+puts "ACCESS_TOKEN.TOKEN >>>>>>>>>>>>>>>> #{access_token.token.inspect}"
         token = access_token.token
-puts ">>>>>>>>>> #{token.inspect}"
+puts "TOKEN >>>>>>>>>>>>>>>>> #{token.inspect}"
         @access_token = ::OAuth2::AccessToken.new(client, token, access_token.params)
 puts ">>>>>>>>>>>>>>>>>>>>>>> #{@access_token.inspect}"
         super
