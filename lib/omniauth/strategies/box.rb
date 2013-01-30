@@ -34,12 +34,13 @@ module OmniAuth
       
       def request_phase
         options[:response_type] ||= 'code'
-        options[:state] = 'authenticated'
+p options
         super
       end
       
       def callback_phase
-        #request.params['state'] = session['omniauth.state']
+        request.params['state'] = session['omniauth.state']
+p request.params
         super
       end
         
