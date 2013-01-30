@@ -39,6 +39,7 @@ p options
       end
       
       def callback_phase
+p request.params
         request.params['state'] = session['omniauth.state']
 p request.params
         super
