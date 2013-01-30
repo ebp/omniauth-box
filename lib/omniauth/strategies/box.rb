@@ -45,10 +45,11 @@ p request.params
       end
         
       def build_access_token
-        access_token = super
-puts ">>>>>>>>>>>>>>>> #{access_token.inspect}"
-        token = eval(access_token.token)['token']
-        @access_token = ::OAuth2::AccessToken.new(client, token, access_token.params)
+#        access_token = super
+#puts ">>>>>>>>>>>>>>>> #{access_token.inspect}"
+#        token = eval(access_token.token)['token']
+#        @access_token = ::OAuth2::AccessToken.new(client, token, access_token.params)
+        super
       end
  
       def raw_info
