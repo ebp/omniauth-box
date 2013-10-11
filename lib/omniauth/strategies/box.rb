@@ -12,6 +12,11 @@ module OmniAuth
         :token_url     => 'https://api.box.com/oauth2/token'
       }
       
+      def request_call
+        session['omniauth.box.state'] = request.params['state'] if request.params['state']
+        super
+      end
+
       uid { raw_info['id'] }
       
       info do
@@ -45,6 +50,7 @@ module OmniAuth
 
       def callback_phase
         request.params['state'] = session['omniauth.state']
+        request.params['box.state'] = session['omniauth.box.state']
         super
       end
         
